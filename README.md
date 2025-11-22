@@ -38,3 +38,12 @@ El laboratorio culmina con un **caso integrador** donde se combinan varias herra
 /codeium            → Pruebas de sugerencias y comparación con Copilot
 /replit             → Microproyecto generado/asistido por IA
 /claude             → Análisis y
+
+## Reflexión y uso de IA
+
+Durante el laboratorio se utilizaron varias IAs (ChatGPT, Gemini, Copilot, Codeium, Claude, etc.) como apoyo para:
+
+Generar código y prompts.
+Mejorar redacción de informes.
+Analizar y refactorizar código existente.
+Todas las salidas de IA fueron revisadas, ajustadas y validadas manualmente, en línea con las políticas de integridad académica.
