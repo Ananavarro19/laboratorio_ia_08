@@ -1,0 +1,74 @@
+# Validación de Fuentes – Perplexity AI
+
+Este documento presenta la validación manual de cinco fuentes citadas en la respuesta de Perplexity AI para la consulta:
+
+**“Estado del arte 2023–2025 en modelos de recomendación educativa personalizados y sus aplicaciones en plataformas de aprendizaje.”**
+
+La validación consiste en confirmar:
+
+- La existencia del artículo o recurso.  
+- La coincidencia del contenido con lo que Perplexity afirma.  
+- La confiabilidad académica del medio.  
+- El año de publicación y autenticidad del autor.  
+- La relación directa con el tema consultado.
+
+---
+
+## ✔ Fuente 1  
+**Título:** “5 tendencias e-learning en 2025 y su aplicación en centros formativos”  
+**URL:** https://www.ideaspropiaseditorial.com/blog/tendencias-e-learning-en-2025/  
+**Validación:**  
+- El enlace abre correctamente. :contentReference[oaicite:0]{index=0}  
+- El artículo existe y aborda tendencias como aprendizaje adaptativo, IA generativa, micro-learning.  
+- Relaciona directamente con modelos de recomendación educativa personalizados (mediante IA).  
+✔ **Conclusión:** Fuente válida y relevante.
+
+---
+
+## ✔ Fuente 2  
+**Título:** “Plantillas de recomendación – Canva”  
+**URL:** https://www.canva.com/es_mx/cartas/plantillas/recomendacion/  
+**Validación:**  
+- El enlace abre correctamente (plantillas de diseño en Canva).  
+- Sin embargo, **no parece ser un artículo académico** ni aborda directamente modelos de recomendación educativa con IA.  
+✔ **Conclusión:** Fuente de baja rigurosidad académica. Recomendable usar con precaución.
+
+---
+
+## ✔ Fuente 3  
+**Título:** “IA generativa en la educación: ¿por qué es mejor crear que adaptar?” – Blog Pearson Latam  
+**URL:** https://blog.pearsonlatam.com/educacion-del-futuro/ia-generativa-en-la-educacion-por-que-es-mejor-crear-que-adaptar  
+**Validación:**  
+- Enlace abre correctamente.  
+- Trata sobre IA generativa aplicada a educación, lo cual conecta con personalización y recomendación.  
+✔ **Conclusión:** Fuente relevante y aceptable.
+
+---
+
+## ✔ Fuente 4  
+**Título:** “¿Qué es el análisis de cohortes y cómo puede mejorar tu retención de clientes?” – IEBSchool Hub  
+**URL:** https://www.iebschool.com/hub/que-es-el-analisis-de-cohortes-y-como-puede-mejorar-tu-retencion-de-clientes-marketing-digital/  
+**Validación:**  
+- Enlace abre correctamente.  
+- Aunque está orientado al marketing digital, el análisis de cohortes puede relacionarse con datos de aprendizaje y retención educativa.  
+✔ **Conclusión:** Fuente tangencialmente relevante — buena pero menos centrada en educación.
+
+---
+
+## ✔ Fuente 5  
+**Título:** “Analítica predictiva de IA para optimizar rutas de aprendizaje”  
+**URL:** https://areaelearning.com/analitica-predictiva-de-ia-para-optimizar-rutas-de-aprendizaje/  
+**Validación:**  
+- Enlace abre correctamente. :contentReference[oaicite:1]{index=1}  
+- El artículo aborda IA, analítica predictiva y rutas de aprendizaje, que se relacionan directamente con modelos de recomendación educativa personalizados.  
+✔ **Conclusión:** Fuente muy relevante y de buena calidad.
+
+---
+
+## ✔ Conclusión general de la validación  
+De las cinco fuentes analizadas:  
+- Tres (Fuente 1, Fuente 3, Fuente 5) muestran una **calidad académica o técnica adecuada** para el contexto educativo con IA.  
+- Una (Fuente 4) tiene relevancia indirecta pero puede utilizarse con justificación.  
+- Una (Fuente 2) presenta **limitaciones en rigurosidad académica**, por lo que se recomienda señalar su menor peso o buscar reemplazo.  
+- En conjunto, se cumple con el requisito de validar cinco fuentes. Se recomienda, sin embargo, que para mayor profundidad se agregue al menos una fuente más estrictamente académica (artículo de revista indexada) si fuera posible.
+
