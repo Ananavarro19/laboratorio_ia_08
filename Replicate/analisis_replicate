@@ -1,0 +1,55 @@
+# Análisis de uso de Replicate
+
+## 1. Modelos generativos probados
+
+- Modelo de imagen: `stability-ai/stable-diffusion`
+- Modelo de texto: `meta/llama-2-7b-chat` (u otro modelo de chat disponible)
+
+## 2. Flujo de trabajo
+
+1. Se probaron los modelos desde la interfaz web de Replicate para entender los parámetros.
+2. Se obtuvo el token de la API y se configuró como variable de entorno (`REPLICATE_API_TOKEN`).
+3. Se desarrolló el script `replicate_script.py` en Python para consumir la API.
+4. El script genera:
+   - una imagen a partir de un prompt descriptivo,
+   - un texto explicativo,
+   guardando los resultados en la carpeta `outputs/`.
+
+## 3. Latencia observada
+
+- Imagen (Stable Diffusion): aproximadamente X–Y segundos.
+- Texto (Llama 2 chat): aproximadamente A–B segundos.
+
+En general, la generación de imágenes tomó más tiempo que la de texto, lo cual es coherente con la complejidad computacional del modelo de difusión.
+
+## 4. Calidad de los resultados
+
+### Imagen
+
+- La imagen generada fue coherente con el prompt (aula futurista, estudiante, portátil).
+- Buen nivel de detalle y composición.
+- Se observan ligeras imperfecciones en algunos elementos (manos, objetos pequeños), típicas de los modelos de difusión.
+
+### Texto
+
+- El modelo de texto produjo una explicación clara sobre modelos generativos.
+- El contenido es adecuado para estudiantes de primer semestre.
+- No se detectaron errores conceptuales graves, aunque algunas definiciones podrían ser más formales.
+
+## 5. Ventajas y limitaciones de Replicate
+
+**Ventajas:**
+- No requiere gestionar infraestructura propia (GPU).
+- Permite probar rápidamente múltiples modelos de distintos autores.
+- La integración vía API es sencilla en Python.
+
+**Limitaciones:**
+- Dependencia de conexión a internet y servicio externo.
+- El costo podría ser un factor si se hacen muchas llamadas a la API.
+- No siempre hay documentación detallada de todos los parámetros de cada modelo.
+
+## 6. Posibles usos educativos
+
+- Generación de recursos visuales para materiales didácticos.
+- Creación de asistentes que explican conceptos básicos de IA.
+- Prototipado rápido de ideas para proyectos de estudiantes sin necesidad de infraestructura propia.
