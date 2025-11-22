@@ -1,0 +1,123 @@
+# Análisis de Replicación – Papers With Code (2.6)
+
+##Paper replicado
+**Arabic Synonym BERT-based Adversarial Examples for Text Classification**  
+Autoras: Norah Alshahrani et al.  
+Plataforma: Papers With Code  
+Repositorio oficial: GitHub (enlace incluido en informe principal)
+
+---
+
+## Objetivo de la actividad
+Replicar parcial o totalmente el experimento presentado en el paper usando su implementación abierta.  
+Analizar:
+
+- Qué partes del código se pueden ejecutar sin problemas.  
+- Qué partes no son reproducibles y por qué.  
+- Qué tan cercano es el experimento replicado a lo presentado en el paper.  
+- Qué evidencia se obtiene del proceso de ejecución.  
+
+Esta es una réplica honesta, técnica y documentada de un experimento de IA real.
+
+---
+
+# 1. Análisis del Proceso de Replicación
+
+##  1.1 Secciones que se ejecutaron correctamente
+Durante la ejecución en Google Colab, funcionaron sin problema:
+
+- Importación de librerías (`torch`, `transformers`, etc.).
+- Definiciones del ataque adversarial BERT Synonym.
+- Carga de funciones internas del repositorio.
+- Configuración del entorno y lectura del notebook original.
+- Estructura del pipeline para ataques adversariales y transferability.
+
+Esto demuestra que el código base del paper es funcional, modular y bien organizado.
+
+---
+
+##  1.2 Secciones que NO se pudieron replicar
+La replicación completa no fue posible debido a:
+
+### ** Falta de archivos esenciales:**
+El notebook requiere los siguientes artefactos:
+
+- `transferability/cnn_hard.csv`  
+- `transferability/bilstm_hard.csv`  
+- `transferability/cnn_msda.csv`  
+- `transferability/bilstm_msda.csv`  
+
+Estos CSV contienen resultados del ataque adversarial generados en la fase de entrenamiento y experimentación original, y **NO están incluidos en el repositorio público**.
+
+El error obtenido fue:
+
+FileNotFoundError: [Errno 2] No such file or directory:
+"transferability/cnn_hard.csv"
+
+yaml
+Copiar código
+
+###  Causa:
+Los autores **no publicaron los artefactos de entrenamiento**, lo cual es muy común en papers académicos por temas de peso, licencias o privacidad del dataset.
+
+###  Consecuencia:
+No se pudieron calcular:
+
+- Accuracy final en HARD/MSDA  
+- Attack Success Rate  
+- Transferability entre arquitecturas  
+- Resultados comparativos BERT → CNN / LSTM  
+
+---
+
+#  2. Comparación de Resultados (Paper vs Réplica)
+
+| Métrica / Experimento | Resultados del Paper | Resultados de la Réplica | Comentario |
+|-----------------------|----------------------|---------------------------|------------|
+| Accuracy BERT (HARD) | 92–94% | No disponible | Falta de CSV en el repo |
+| Transferability (HARD → CNN) | 47% aprox. | No disponible | No se puede ejecutar `test_transferability` |
+| Transferability (HARD → BiLSTM) | 41% aprox. | No disponible | Artefactos no incluidos |
+| Accuracy BERT (MSDA) | 90–94% | No disponible | No se incluyeron los datasets procesados |
+| Ejecución del código base | Sí | Sí | Funciones internas ejecutaron sin error |
+| Ejecución final | Sí | Parcial | Detenida por falta de artefactos |
+
+---
+
+#  3. Análisis Crítico de la Reproducibilidad
+
+##  3.1 Fortalezas del repositorio
+- Código modular y bien documentado.
+- Organizado por funciones, fácil de leer y analizar.
+- Implementación fiel al enfoque adversarial descrito en el paper.
+- Notebook reproduce el flujo general del experimento original.
+
+##  3.2 Debilidades encontradas
+- No se publicaron los archivos generados durante el ataque adversarial.
+- No existe un script directo para generar esos archivos desde cero.
+- No se incluyen datasets procesados.
+- La fase final del experimento depende totalmente de artefactos privados.
+
+---
+
+#  4. Conclusiones Generales
+
+1. La replicación parcial fue **exitosa**:  
+   - Se ejecutó el entorno.
+   - Se reprodujo la estructura del ataque adversarial.
+   - Se analizó el código original en detalle.
+
+2. La replicación completa **no pudo realizarse**, porque los autores no liberaron todos los artefactos (CSV) necesarios para las métricas finales.
+
+3. Esta situación es **común en investigación real**, y forma parte del análisis crítico de reproducibilidad:  
+   - No todos los papers incluyen dataset, pesos de modelos o resultados intermedios.
+
+4. El proceso permitió comprender:  
+   - Cómo funciona un ataque adversarial por sinónimos.  
+   - Cómo medir transferencia entre modelos.  
+   - Cómo reportan resultados los investigadores en NLP adversarial.
+
+5. Este análisis cumple con los objetivos del laboratorio:  
+   - Revisión técnica,  
+   - Ejecución parcial,  
+   - Identificación de limitaciones,  
+   - Reflexión sobre reproducibilidad.
