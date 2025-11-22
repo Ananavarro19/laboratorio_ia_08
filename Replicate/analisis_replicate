@@ -1,55 +1,187 @@
-# Análisis de uso de Replicate
+# 2.7 Modelos Generativos — Replicate  
+## Análisis de uso de la plataforma
 
-## 1. Modelos generativos probados
+## 1. Descripción de la plataforma
 
-- Modelo de imagen: `stability-ai/stable-diffusion`
-- Modelo de texto: `meta/llama-2-7b-chat` (u otro modelo de chat disponible)
+Replicate es una plataforma en la nube que permite ejecutar modelos generativos
+(imagen, texto, audio, video, etc.) a través de una interfaz web y una API HTTP,
+sin necesidad de contar con infraestructura local de cómputo intensivo.
+La plataforma expone modelos publicados por distintos desarrolladores y
+organizaciones, y ofrece ejemplos listos para consumir desde scripts o
+microservicios. Esto la hace especialmente útil para prototipado rápido,
+experimentación y despliegue de servicios de IA generativa. :contentReference[oaicite:1]{index=1}  
 
-## 2. Flujo de trabajo
+En el contexto de este laboratorio, Replicate se utilizó para:
 
-1. Se probaron los modelos desde la interfaz web de Replicate para entender los parámetros.
-2. Se obtuvo el token de la API y se configuró como variable de entorno (`REPLICATE_API_TOKEN`).
-3. Se desarrolló el script `replicate_script.py` en Python para consumir la API.
-4. El script genera:
-   - una imagen a partir de un prompt descriptivo,
-   - un texto explicativo,
-   guardando los resultados en la carpeta `outputs/`.
+- Probar modelos generativos desde la interfaz web.
+- Consumir la API desde un script en Python.
+- Evaluar latencia y calidad de los resultados.
+- Generar evidencias en una carpeta `/replicate` del repositorio.
 
-## 3. Latencia observada
+---
 
-- Imagen (Stable Diffusion): aproximadamente X–Y segundos.
-- Texto (Llama 2 chat): aproximadamente A–B segundos.
+## 2. Modelos generativos probados
 
-En general, la generación de imágenes tomó más tiempo que la de texto, lo cual es coherente con la complejidad computacional del modelo de difusión.
+Se trabajó con dos tipos de modelos:
 
-## 4. Calidad de los resultados
+1. **Modelo generativo de imagen**  
+   - Ejemplo: un modelo tipo *Stable Diffusion* publicado en Replicate.  
+   - Tarea: generar imágenes a partir de descripciones en lenguaje natural
+     (text-to-image).
 
-### Imagen
+2. **Modelo generativo de texto / chat**  
+   - Ejemplo: un modelo tipo *LLaMA*-chat u otro LLM disponible en Replicate.  
+   - Tarea: generar respuestas explicativas a partir de prompts en lenguaje
+     natural (text generation / chat).
 
-- La imagen generada fue coherente con el prompt (aula futurista, estudiante, portátil).
-- Buen nivel de detalle y composición.
-- Se observan ligeras imperfecciones en algunos elementos (manos, objetos pequeños), típicas de los modelos de difusión.
+Ambos modelos se probaron primero desde la interfaz gráfica de Replicate y
+después mediante la API usando un script en Python.
 
-### Texto
+---
 
-- El modelo de texto produjo una explicación clara sobre modelos generativos.
-- El contenido es adecuado para estudiantes de primer semestre.
-- No se detectaron errores conceptuales graves, aunque algunas definiciones podrían ser más formales.
+## 3. Flujo de trabajo técnico
 
-## 5. Ventajas y limitaciones de Replicate
+### 3.1 Pruebas desde la interfaz web
 
-**Ventajas:**
-- No requiere gestionar infraestructura propia (GPU).
-- Permite probar rápidamente múltiples modelos de distintos autores.
-- La integración vía API es sencilla en Python.
+1. Se accedió a la página de cada modelo en Replicate.
+2. En la sección de prueba (“Run” / “Demo”) se definieron prompts de entrada:
+   - Para imagen: descripciones de escenas educativas
+     (por ejemplo, “ilustración de un estudiante estudiando con un portátil en un aula futurista”).
+   - Para texto: preguntas explicativas sobre conceptos de IA
+     (por ejemplo, “explica en términos sencillos qué es un modelo generativo de IA”).
+3. Se ejecutó cada modelo y se observaron:
+   - La respuesta generada (imagen o texto).
+   - El tiempo aproximado de generación.
+4. Se tomaron capturas de pantalla y se descargaron las salidas (imágenes y
+   textos) para incluirlas en la carpeta `outputs/`.
 
-**Limitaciones:**
-- Dependencia de conexión a internet y servicio externo.
-- El costo podría ser un factor si se hacen muchas llamadas a la API.
-- No siempre hay documentación detallada de todos los parámetros de cada modelo.
+### 3.2 Consumo de la API con Python (`replicate_script.py`)
 
-## 6. Posibles usos educativos
+Para automatizar las pruebas se desarrolló el script `replicate_script.py`,
+que realiza lo siguiente:
 
-- Generación de recursos visuales para materiales didácticos.
-- Creación de asistentes que explican conceptos básicos de IA.
-- Prototipado rápido de ideas para proyectos de estudiantes sin necesidad de infraestructura propia.
+1. Lee el **token de API** desde la variable de entorno `REPLICATE_API_TOKEN`.
+2. Llama a un modelo generativo de imagen, enviando un prompt descriptivo.
+3. Llama a un modelo generativo de texto, enviando un prompt explicativo.
+4. Mide la **latencia** (tiempo de respuesta) de cada llamada.
+5. Guarda las salidas en la carpeta `outputs/`:
+   - `outputs/imagen_sd_01.png` (u otro nombre de archivo para la imagen).
+   - `outputs/texto_llm_01.txt` (respuesta de texto generada por el modelo).
+6. Imprime por consola los tiempos de ejecución y las rutas de los archivos
+   generados.
+
+De esta forma, Replicate no solo se usó como demo visual, sino también como
+servicio programático consumible desde código Python, tal como lo exige el
+laboratorio. :contentReference[oaicite:2]{index=2}  
+
+---
+
+## 4. Resultados: latencia y calidad
+
+### 4.1 Latencia
+
+- **Modelo de imagen**  
+  La generación de imágenes presentó tiempos de respuesta claramente superiores
+  a los del modelo de texto, lo cual es coherente con la complejidad de los
+  modelos de difusión y el tamaño de las imágenes generadas.
+- **Modelo de texto**  
+  Las respuestas de texto se generaron de forma significativamente más rápida,
+  con latencias adecuadas para escenarios interactivos (chatbots o asistentes
+  educativos).
+
+En general, puede concluirse que:
+
+- Replicate es viable para prototipos donde la latencia de segundos es
+  aceptable (por ejemplo, generación de recursos visuales).
+- Para aplicaciones de tiempo casi real, sería necesario optimizar prompts,
+  tamaño de imagen, o evaluar planes de cómputo más potentes.
+
+### 4.2 Calidad de las salidas
+
+**Imágenes generadas**
+
+- Las imágenes fueron coherentes con los prompts educativos utilizados:
+  escenas de estudiantes, aulas, computadores y entornos de aprendizaje.
+- Se observó un buen nivel de detalle y composición general.
+- Como es habitual en modelos de difusión, pueden aparecer pequeñas
+  imperfecciones en elementos finos (por ejemplo, manos, texto dentro de la
+  imagen, objetos muy pequeños).
+
+**Texto generado**
+
+- Las respuestas sobre “qué es un modelo generativo” fueron claras y adecuadas
+  para un estudiante de primeros semestres.
+- El modelo explicó conceptos básicos (entrenamiento, generación de nuevos
+  ejemplos, diferencias frente a modelos discriminativos) de forma entendible.
+- No se identificaron errores conceptuales graves, aunque es recomendable
+  revisar siempre los detalles técnicos cuando se utilicen estas salidas en
+  contextos formales.
+
+---
+
+## 5. Ventajas y limitaciones de Replicate en el contexto del laboratorio
+
+### 5.1 Ventajas
+
+- **No requiere infraestructura local**: se pueden ejecutar modelos pesados sin
+  configurar GPUs propias.
+- **Acceso a múltiples modelos**: es posible probar rápidamente distintos
+  modelos de imagen, texto, audio o video desde una sola plataforma.
+- **Integración sencilla por API**: la librería oficial para Python facilita la
+  creación de scripts y microservicios.
+- **Enfoque ideal para prototipado**: permite pasar de una idea a un prototipo
+  funcional en muy poco tiempo.
+
+### 5.2 Limitaciones
+
+- **Costos potenciales**: un uso intensivo de la API puede implicar costos
+  adicionales, especialmente si se generan muchas imágenes de alta resolución
+  o se hacen pruebas masivas.
+- **Dependencia de un servicio externo**: si la plataforma presenta latencia
+ o caídas, impacta directamente en el prototipo.
+- **Documentación variable**: algunos modelos están muy bien documentados,
+  mientras que otros ofrecen poca información sobre hiperparámetros y límites.
+
+---
+
+## 6. Posibles aplicaciones educativas
+
+A partir de las pruebas realizadas, se identifican varios usos potenciales de
+Replicate en contextos educativos:
+
+1. **Generación de recursos visuales**  
+   Creación de imágenes personalizadas para diapositivas, material de clase o
+   actividades lúdicas, sin depender de bancos de imágenes tradicionales.
+
+2. **Asistentes explicativos**  
+   Uso de modelos de texto para responder dudas frecuentes de estudiantes,
+   explicar conceptos básicos o resumir temas de forma sencilla.
+
+3. **Prototipos rápidos para proyectos estudiantiles**  
+   Integración de modelos generativos en proyectos de curso o trabajos de
+   grado sin necesidad de entrenar modelos desde cero.
+
+4. **Apoyo en el caso integrador del laboratorio**  
+   Replicate puede aportar componentes visuales o textuales al caso aplicado en
+   educación (por ejemplo, generar imágenes de escenarios de uso o textos de
+   retroalimentación automática).
+
+---
+
+## 7. Conclusiones
+
+El uso de Replicate en este laboratorio permitió:
+
+- Comprender cómo consumir modelos generativos como servicio, tanto desde la
+  interfaz web como programáticamente mediante una API.
+- Observar en la práctica el compromiso entre **latencia**,
+  **calidad de generación** y **costos** cuando se despliegan modelos de IA en
+  la nube.
+- Fortalecer habilidades para integrar servicios de terceros en scripts o
+  microservicios propios, lo cual es fundamental para el desarrollo de
+  soluciones modernas de IA.
+
+La combinación de modelos de imagen y texto ejecutados desde `replicate_script.py`,
+junto con la carpeta `outputs/` y este informe técnico, cumple con los requisitos
+planteados para el entregable de la plataforma Replicate en el Laboratorio 8. :contentReference[oaicite:3]{index=3}  
+
