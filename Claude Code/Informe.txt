@@ -1,0 +1,43 @@
+# 2.13 Claude Code — Informe de análisis y mejoras de código
+
+## 1. Introducción
+En esta actividad se utilizó Claude Code para analizar y mejorar un archivo
+de Python. El objetivo fue comprobar la capacidad de Claude para detectar errores,
+sugerir optimizaciones y aplicar buenas prácticas de programación.
+
+## 2. Archivo original
+Se partió del archivo `codigo_original.py`, el cual contenía una función
+simple para calcular el promedio de una lista de notas. El código funcionaba,
+pero presentaba problemas de legibilidad, uso de bucles innecesarios y falta
+de validación.
+
+## 3. Análisis de Claude
+Claude identificó los siguientes puntos:
+- Uso manual de sumas que puede reemplazarse por `sum()`.
+- Falta de validación para listas vacías.
+- Falta de estructura en el bloque principal.
+- No se formateaba la salida.
+- Pocas o nulas buenas prácticas (PEP8).
+
+## 4. Código mejorado
+Claude generó una versión optimizada, guardada como `codigo_mejorado.py`,
+que incluye:
+- Validación de entradas.
+- Reducción del código a una línea usando `sum()`.
+- Estructura `if __name__ == "__main__":`
+- Formateo profesional de salida.
+- Comentarios y nombres claros.
+
+## 5. Comparación entre versiones
+Claude señaló mejoras sustanciales en:
+- Eficiencia
+- Legibilidad
+- Claridad de funciones
+- Buenas prácticas
+- Robustez ante errores
+
+## 6. Conclusiones
+Claude Code demostró ser una herramienta útil para revisión y optimización
+rápida de código. Puede detectar problemas comunes de estilo, lógica y estructura.
+Sin embargo, no reemplaza la revisión humana en casos complejos, especialmente
+cuando se requiere conocimiento del contexto del proyecto o validación profunda.
